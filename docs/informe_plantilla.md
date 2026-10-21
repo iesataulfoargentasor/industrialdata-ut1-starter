@@ -1,6 +1,6 @@
 # Informe técnico de IndustrialData
 
-Equipo, integrantes, fecha, URL y commit o etiqueta: por completar.
+Alumno, fecha, URL del repositorio personal y commit o etiqueta: por completar.
 
 Extensión final: 6–10 páginas sin anexos. Esta plantilla contiene secciones, no conclusiones.
 

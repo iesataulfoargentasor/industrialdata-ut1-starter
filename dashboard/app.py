@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title='IndustrialData · Inicio', page_icon='🏭', layout='wide')
 st.title('IndustrialData')
 st.caption('UT1 · Sistemas de Big Data · I.E.S. Ataulfo Argenta')
-st.info('Panel inicial: todavía no hay resultados conectados. El equipo debe implementar las tres vistas y la lectura de publicaciones válidas.')
+st.info('Panel inicial: todavía no hay resultados conectados. Cada alumno debe implementar las tres vistas y la lectura de publicaciones válidas.')
 tabs = st.tabs(['Estado e incidencias', 'Producción y energía', 'Calidad y trazabilidad'])
 prompts = [
     'H4: mostrar episodios y su evidencia; añadir filtros de máquina y periodo.',

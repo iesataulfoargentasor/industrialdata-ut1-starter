@@ -1,6 +1,6 @@
 # Modelo y contrato de datos · H1–H2
 
-Estado: por completar por el equipo. Consultar campos mínimos en el enunciado.
+Estado: por completar por cada alumno. Consultar campos mínimos en el enunciado.
 
 ## Preguntas del responsable de planta
 

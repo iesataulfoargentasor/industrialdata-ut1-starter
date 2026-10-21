@@ -3,15 +3,17 @@
 **UT1 · Sistemas de Big Data · RA1**  
 I.E.S. Ataulfo Argenta · Castro Urdiales · Especialización en Inteligencia Artificial y Big Data · 2026–2027
 
-Vuestro equipo construirá una plataforma de datos para una planta industrial ficticia del entorno de Castro Urdiales y Bizkaia. Integraréis mediciones de máquinas, producción, mantenimiento y un catálogo para explicar incidencias, calidad de datos y consumo energético.
+Cada alumno construirá, de forma individual, una plataforma de datos para una planta industrial ficticia del entorno de Castro Urdiales y Bizkaia. Integraréis mediciones de máquinas, producción, mantenimiento y un catálogo para explicar incidencias, calidad de datos y consumo energético.
 
-**Este repositorio es un punto de partida, no una práctica resuelta.** Los datos serán sintéticos; no representan una empresa real. El [enunciado completo y la rúbrica](docs/enunciado.html) definen los requisitos. Este README acompaña el arranque y deberá evolucionar hasta explicar vuestro proyecto terminado.
+**Este repositorio es un punto de partida, no una práctica resuelta.** Los datos serán sintéticos; no representan una empresa real. El [enunciado completo y la rúbrica](https://iesataulfoargentasor.github.io/industrialdata-ut1-starter/enunciado.html) definen los requisitos. Este README acompaña el arranque y deberá evolucionar hasta explicar vuestro proyecto terminado.
 
-**Empezad aquí:** [crear vuestro repositorio desde la plantilla](https://github.com/iesataulfoargentasor/industrialdata-ut1-starter/generate). Después seguid el apartado 3 para clonarlo y arrancar Docker.
+**Trabajo individual: un alumno, un repositorio en su propia cuenta.**
+
+**Empieza aquí:** [crear tu repositorio personal desde la plantilla](https://github.com/iesataulfoargentasor/industrialdata-ut1-starter/generate). Este enlace abre el formulario de GitHub: en **Owner debes seleccionar TU usuario**, no `iesataulfoargentasor`. La cuenta del profesor solo proporciona la plantilla. Sigue el apartado 3 para crear tu copia y arrancarla.
 
 ## 1. Qué recibís y qué construiréis
 
-| Incluido y utilizable desde el inicio | Trabajo que debe realizar el equipo |
+| Incluido y utilizable desde el inicio | Trabajo que debe realizar cada alumno |
 |---|---|
 | Docker Compose, red y volumen PostgreSQL | Modelo SQL, catálogo, ventanas y registro de cargas |
 | Imagen Python con bibliotecas fijadas | Generador reproducible y escenarios S01–S08 |
@@ -61,27 +63,36 @@ Necesitáis una cuenta de GitHub, Git instalado y Docker Desktop con **contenedo
 
 Como orientación de trabajo, reservad unos 4 GB para la base y más recursos para el millón de observaciones o Spark. El consumo de vuestra implementación deberá medirse; estos valores no son mínimos garantizados. No ejecutéis varios experimentos grandes a la vez.
 
-### Paso 1. Crear el repositorio del equipo
+### Paso 1. Crear tu repositorio en TU cuenta
 
 1. Iniciad sesión y abrid la [plantilla IndustrialData](https://github.com/iesataulfoargentasor/industrialdata-ut1-starter).
 2. Pulsad **Use this template → Create a new repository** (o el enlace «crear vuestro repositorio» del inicio).
-3. Elegid la cuenta propietaria en **Owner** y un nombre, por ejemplo `industrialdata-equipo-01`.
+3. En **Owner**, selecciona **tu cuenta personal de GitHub**. Escribe `industrialdata` en **Repository name**. Por ejemplo, si tu usuario fuera `ana-garcia`, el resultado sería `https://github.com/ana-garcia/industrialdata`. Es un ejemplo ficticio: utiliza tu usuario real.
 4. Elegid visibilidad: puede ser privado con acceso para el profesor; hacerlo público como portfolio es opcional. Dejad desmarcado **Include all branches**: basta `main`.
-5. Pulsad **Create repository from template**. Un integrante crea el repositorio compartido e invita al resto y al profesor desde **Settings → Collaborators**; los demás aceptan la invitación.
+5. Pulsa **Create repository from template**. Comprueba que la cabecera muestra `TU_USUARIO / industrialdata`. Si lo haces privado, invita al profesor (`iesataulfoargentasor`) desde **Settings → Collaborators** para que pueda evaluarlo. Cada alumno realiza estos pasos por separado; no se comparte un repositorio de grupo.
+
+```text
+Plantilla del profesor                     Tu copia independiente
+iesataulfoargentasor/                      TU_USUARIO/
+  industrialdata-ut1-starter  ──────────→    industrialdata
+                         Use this template
+```
+
+El propietario de la plantilla aparece en el enlace porque identifica el material de origen. El campo **Owner** del formulario determina quién será propietario de la copia. No necesitas permisos de escritura en la cuenta del profesor ni debes crear un repositorio allí.
 
 La copia tendrá su propio historial. Los cambios posteriores de la plantilla no se incorporan automáticamente. [Ayuda oficial de GitHub sobre plantillas](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
 
 ### Paso 2. Clonar vuestra copia
 
-En la página de **vuestro nuevo repositorio**, copiad la URL de **Code → HTTPS**. Sustituid `TU_USUARIO` y `industrialdata-equipo-01` por el propietario y nombre reales:
+En la página de **vuestro nuevo repositorio**, copiad la URL de **Code → HTTPS**. Sustituid `TU_USUARIO` y `industrialdata` por el propietario y nombre reales:
 
 ```console
-git clone https://github.com/TU_USUARIO/industrialdata-equipo-01.git
-cd industrialdata-equipo-01
+git clone https://github.com/TU_USUARIO/industrialdata.git
+cd industrialdata
 git remote -v
 ```
 
-Comprobad que `origin` apunta al repositorio del equipo. Cada integrante lo clona en su ordenador. GitHub puede solicitar autenticación para repositorios privados o para subir cambios; utilizad su mecanismo de inicio de sesión, sin escribir credenciales en los archivos del proyecto.
+Comprueba que `origin` apunta a `https://github.com/TU_USUARIO/industrialdata.git`, con tu usuario real. Clona tu repositorio personal en tu ordenador. GitHub puede solicitar autenticación para repositorios privados o para subir cambios; utilizad su mecanismo de inicio de sesión, sin escribir credenciales en los archivos del proyecto.
 
 La clonación ya configura Git y `origin`; podéis empezar a trabajar directamente. Todos los comandos restantes se ejecutan **en la carpeta que contiene este README y `compose.yaml`**. Si recibisteis el ZIP, cread igualmente vuestra copia en GitHub y clonadla para seguir este flujo.
 
@@ -172,14 +183,14 @@ Esta orden solo verifica que Spark puede arrancar y contar tres filas de prueba.
 ## 5. Mapa del repositorio
 
 ```text
-industrialdata-equipo-01/      # El nombre real será el de vuestro repositorio
+industrialdata/      # El nombre real será el de vuestro repositorio
 ├── README.md                  # Guía viva: completadla con vuestro proyecto
 ├── compose.yaml               # Servicios y persistencia
 ├── .env.example               # Configuración local de ejemplo
 ├── requirements.txt           # Dependencias de la imagen Python
 ├── pyproject.toml             # Paquete Python y configuración de pytest
 ├── .github/                   # Formularios de tareas y plantilla de PR
-├── CONTRIBUTING.md            # Acuerdos de colaboración
+├── CONTRIBUTING.md            # Organización y revisión individual
 ├── docker/                    # Imagen común e imagen opcional Spark
 ├── sql/                       # Inicialización; modelo pendiente
 ├── src/industrialdata/        # Interfaces y módulos por desarrollar
@@ -229,7 +240,7 @@ docker compose down
 
 No añadáis `-v` si queréis conservar PostgreSQL. Para P09, comparad catálogo y resultados antes y después del reinicio sin regenerarlos. Que el panel abra no demuestra por sí solo que los datos sigan intactos.
 
-## 7. Guardar avances y colaborar en GitHub
+## 7. Guardar avances y revisar tu trabajo individual
 
 Después de crear vuestra copia y clonarla siguiendo el apartado 3, abrid una rama para la primera tarea. Por ejemplo, completad el diseño en `docs/modelo_y_contrato.md` y guardad el cambio:
 
@@ -238,20 +249,20 @@ git switch -c docs/diseno-inicial
 git status
 git add docs/modelo_y_contrato.md
 git diff --cached
-git commit -m "Documentar el diseño inicial del equipo"
+git commit -m "Documentar mi diseño inicial"
 git push -u origin docs/diseno-inicial
 ```
 
-Ejecutad el commit después de editar y guardar el documento. Revisad siempre los archivos preparados: `.env` y los históricos de `data/` deben quedar fuera. Abrid una **pull request en vuestro repositorio**, solicitad revisión a otro integrante e integradla cuando esté revisada. Después, cada integrante actualiza su copia de `main`:
+Ejecutad el commit después de editar y guardar el documento. Revisad siempre los archivos preparados: `.env` y los históricos de `data/` deben quedar fuera. Abrid una **pull request en vuestro repositorio**, revisad los cambios y las pruebas e integradla cuando esté comprobada. Podéis utilizar la pull request como registro de vuestra propia revisión; no exige un compañero. Después actualizad la copia local de `main`:
 
 ```console
 git switch main
 git pull --ff-only
 ```
 
-Antes de cambiar de rama, guardad vuestro trabajo pendiente mediante commits en su rama. Entregad al profesor la URL del repositorio del equipo y comprobad que puede acceder.
+Antes de cambiar de rama, guardad vuestro trabajo pendiente mediante commits en su rama. Entregad al profesor la URL de vuestro repositorio personal y comprobad que puede acceder.
 
-Usad las plantillas de `.github/` para abrir tareas y revisar cambios. Preparad un tablero **Pendiente → En curso → En revisión → Hecho**, con prioridades y criterios de cierre. Repartid las tres áreas de trabajo, rotad al menos una vez y registrad revisiones reales. Seguid [CONTRIBUTING.md](CONTRIBUTING.md). El paquete no incluye automatización de GitHub Actions: es una ampliación del enunciado.
+Usad las plantillas de `.github/` para abrir tareas y revisar cambios. Preparad un tablero **Pendiente → En curso → En revisión → Hecho**, con prioridades y criterios de cierre. Cada alumno desarrolla todas las áreas del proyecto y registra sus comprobaciones y decisiones. No hay reparto de tareas ni rotación entre compañeros. Seguid [CONTRIBUTING.md](CONTRIBUTING.md). El enunciado oficial se publica en GitHub Pages desde la cuenta del profesor. No necesitas activar Pages en tu copia. La automatización de pruebas del proyecto en GitHub Actions sigue siendo una ampliación del enunciado.
 
 ## 8. Hitos y evidencias del RA1
 

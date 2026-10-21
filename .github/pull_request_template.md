@@ -18,4 +18,4 @@ Justificación breve, alternativas relevantes y riesgos conocidos.
 - [ ] Se han actualizado contratos y documentación cuando procede.
 - [ ] No se incluyen credenciales ni históricos voluminosos.
 - [ ] Se indican fuentes y ayudas utilizadas.
-- [ ] Otra persona del equipo puede reproducir y explicar el cambio.
+- [ ] He revisado el cambio, puedo explicarlo y he documentado cómo reproducirlo.

@@ -2,18 +2,18 @@
 <h1 id="s0">IndustrialData</h1>
 <p>Práctica integradora de la UT1 y del RA1 de Sistemas de Big Data</p>
 <p>I.E.S. Ataulfo Argenta · Castro Urdiales · Curso de especialización en Inteligencia Artificial y Big Data · Curso 2026–2027</p>
-<p>Construid una plataforma reproducible que integre telemetría industrial, producción y mantenimiento. Debe detectar incidencias, explicar la calidad de sus datos y mostrar indicadores verificables. El proyecto se desarrollará en equipos de tres y podrá presentarse como portfolio técnico en GitHub.</p>
-<p>Duración orientativa: 36 horas. La fecha de entrega y los integrantes se establecerán en Moodle. Esta práctica utiliza una empresa ficticia y datos sintéticos; no representa instalaciones ni datos de una empresa real.</p>
+<p>Construid una plataforma reproducible que integre telemetría industrial, producción y mantenimiento. Debe detectar incidencias, explicar la calidad de sus datos y mostrar indicadores verificables. El proyecto se desarrollará de forma individual: cada alumno tendrá su propio repositorio en su cuenta de GitHub y podrá presentarse como portfolio técnico en GitHub.</p>
+<p>Duración orientativa: 36 horas. La fecha de entrega se establecerá en Moodle. Esta práctica utiliza una empresa ficticia y datos sintéticos; no representa instalaciones ni datos de una empresa real.</p>
 <h2 id="s1">1 El encargo</h2>
-<p>Trabajáis como equipo de datos de una empresa ficticia de componentes industriales situada en el entorno de Castro Urdiales y Bizkaia. La planta tiene motores, bombas y compresores. Sus mediciones, partes de producción y registros de mantenimiento están separados. Algunas mediciones se repiten, otras llegan tarde y algunos sensores dejan de informar.</p>
+<p>Cada alumno asume el papel de especialista en datos de una empresa ficticia de componentes industriales situada en el entorno de Castro Urdiales y Bizkaia. La planta tiene motores, bombas y compresores. Sus mediciones, partes de producción y registros de mantenimiento están separados. Algunas mediciones se repiten, otras llegan tarde y algunos sensores dejan de informar.</p>
 <p>El responsable de planta necesita saber qué máquinas presentan anomalías, cuándo se producen las paradas, qué equipos consumen más energía por unidad correcta y qué conclusiones están limitadas por datos incompletos.</p>
 <p>Entregad un sistema que pueda reproducirse en otro equipo siguiendo el README. Las incidencias se detectarán mediante reglas explicables y estadística descriptiva. La asociación entre una anomalía y una intervención no demuestra que una cause la otra. No se exige un modelo predictivo ni conexión a maquinaria real.</p>
 <h2 id="s2">2 Alcance y organización</h2>
 <p>El núcleo obligatorio comprende un generador reproducible, cuatro fuentes lógicas, procesamiento por microlotes, controles de calidad, almacenamiento Parquet, catálogo PostgreSQL, un panel y pruebas automáticas. Un microlote es un conjunto de mediciones generado y procesado de una vez; no hace falta esperar el tiempo simulado.</p>
-<p>Repartid inicialmente infraestructura e ingesta, transformación y calidad, y análisis y presentación. Rotad al menos una vez y revisad trabajo de otra persona. Todos debéis poder explicar el flujo completo. Los notebooks documentan experimentos; la carga ordinaria debe funcionar sin abrirlos.</p>
+<p>Cada alumno realizará infraestructura e ingesta, transformación y calidad, y análisis y presentación. Planificad las tareas por hitos y registrad las revisiones y comprobaciones propias. Cada alumno debe poder explicar el flujo completo. Los notebooks documentan experimentos; la carga ordinaria debe funcionar sin abrirlos.</p>
 <p>Para mantener el alcance en 36 horas, el panel tendrá tres vistas, el generador será sencillo y no se exige una interfaz de administración. MQTT, Kafka, Kubernetes, nube y aprendizaje automático son ampliaciones. No sustituyen requisitos obligatorios ni añaden puntos por sí solos.</p>
 <h2 id="s3">3 Fuentes y contrato de datos</h2>
-<p>El equipo implementará el generador y las muestras como parte de la práctica. No dependéis de un dataset empresarial ni de una API externa. Utilizad semilla 42 para el escenario de referencia y permitid cambiar semilla, periodo y número de máquinas. Guardad esos parámetros en un manifiesto.</p>
+<p>Cada alumno implementará el generador y las muestras como parte de la práctica. No dependéis de un dataset empresarial ni de una API externa. Utilizad semilla 42 para el escenario de referencia y permitid cambiar semilla, periodo y número de máquinas. Guardad esos parámetros en un manifiesto.</p>
 <p>Representad al menos seis máquinas, dos de cada tipo. El catálogo definirá qué variables corresponden a cada equipo: no asignéis presión a un motor si no tiene ese sensor. Cada fila de telemetría representa una observación de una variable de un sensor en un instante.</p>
 <table><thead><tr><th>Fuente</th><th>Campos mínimos</th><th>Formato y reglas</th></tr></thead><tbody>
 <tr><td>Telemetría</td><td>event_id, sensor_id, machine_id, timestamp_utc, variable, value, unit, ingested_at_utc</td><td>JSON Lines; un objeto por línea. Un evento tiene identidad estable aunque se vuelva a recibir.</td></tr>
@@ -78,7 +78,7 @@ docker compose down</pre>
 <tr><td>H3 Ingesta y calidad</td><td>8</td><td>Conservar raw; normalizar, deduplicar, controlar claves y conflictos; producir Parquet y cuarentena. Probar la segunda carga y un lote tardío.</td></tr>
 <tr><td>H4 Análisis y panel</td><td>7</td><td>Implementar reglas, indicadores y tres vistas. Construir casos manuales pequeños que comprueben resultados.</td></tr>
 <tr><td>H5 Rendimiento y verificación</td><td>6</td><td>Ejecutar pruebas, comparar tamaños y formatos, realizar experimento pandas/PySpark y exportación Avro pequeña. Registrar costes y limitaciones.</td></tr>
-<tr><td>H6 Entrega y defensa</td><td>4</td><td>Completar documentación, ensayo desde un clon limpio, revisión entre compañeros y defensa individual dentro de la demostración del equipo.</td></tr>
+<tr><td>H6 Entrega y defensa</td><td>4</td><td>Completar documentación, ensayo desde un clon limpio, revisión propia y defensa individual del proyecto.</td></tr>
 <tr><td>Total</td><td>36</td><td>La distribución es orientativa; el profesorado concretará las sesiones y fechas en Moodle.</td></tr>
 </tbody></table>
 <h2 id="s10">10 Indicadores que debéis calcular</h2>
@@ -147,7 +147,7 @@ docker compose down</pre>
 <h2 id="s16">16 Rúbrica y cálculo de la calificación</h2>
 <p>RA1: Aplica técnicas de análisis de datos que integran, procesan y analizan la información, adaptando e implementando sistemas que las utilicen.</p>
 <p>Se evalúan los siete criterios del RA1 con los pesos siguientes. En cada criterio se asigna un nivel de 0 a 4: 0 sin evidencia; 1 inicial; 2 básico; 3 competente; 4 avanzado. La puntuación del criterio es peso × nivel / 4. La suma da hasta 100 puntos y se divide entre 10 para obtener la nota.</p>
-<p>Para cada alumno, el nivel de cada criterio se calcula como 80 % de la evidencia del equipo y 20 % de la comprobación individual mediante preguntas o una modificación breve relacionada con ese criterio. Se aplican los mismos descriptores; no se usa el número de commits como medida de aprendizaje. Esta fórmula corresponde a esta práctica y queda subordinada a los acuerdos de evaluación del módulo.</p>
+<p>Para cada alumno, el nivel de cada criterio se calcula como 80 % de las evidencias de su propio proyecto individual y 20 % de la comprobación individual mediante preguntas o una modificación breve relacionada con ese criterio. Se aplican los mismos descriptores; no se usa el número de commits como medida de aprendizaje. Esta fórmula corresponde a esta práctica y queda subordinada a los acuerdos de evaluación del módulo.</p>
 <p>Las ampliaciones no suman puntos fuera de la rúbrica. Pueden aportar evidencia de un nivel superior si el núcleo funciona. Los niveles se asignan según el descriptor alcanzado; una evidencia aislada no compensa requisitos esenciales ausentes.</p>
 <table><thead><tr><th>Criterio</th><th>Peso</th><th>Evidencias principales</th></tr></thead><tbody>
 <tr><td>a Matemática discreta lógica y complejidad</td><td>15 %</td><td>Conjuntos, relaciones, reglas y experimento lista/conjunto.</td></tr>
@@ -186,12 +186,12 @@ docker compose down</pre>
 <li>2 Básico: modelo utilizable y joins principales correctos, pero presenta lagunas en intervalos, huérfanos o trazabilidad.</li>
 <li>1 Inicial: joins que multiplican datos, deduplicación por máquina o ausencia de claves y modelo.</li>
 </ul>
-<h2 id="s21">Rúbrica e Planificación y colaboración</h2>
+<h2 id="s21">Rúbrica e Planificación y seguimiento individual</h2>
 <ul>
-<li>4 Avanzado: objetivos medibles y tareas priorizadas con criterios de cierre; revisiones cruzadas y ajustes razonados de planificación; aportaciones trazables y comprensión compartida.</li>
-<li>3 Competente: tablero actualizado durante el trabajo, hitos, reparto, rotación y revisiones con evidencias.</li>
-<li>2 Básico: planificación inicial y reparto identificable, con seguimiento irregular o revisiones escasas.</li>
-<li>1 Inicial: reparto informal o tablero creado al final, sin evidencia del seguimiento.</li>
+<li>4 Avanzado: objetivos medibles y tareas priorizadas con criterios de cierre; revisiones propias y ajustes razonados de planificación; decisiones trazables y comprensión del flujo completo.</li>
+<li>3 Competente: tablero actualizado durante el trabajo, hitos, estimaciones de tiempo y revisiones con evidencias.</li>
+<li>2 Básico: planificación inicial y secuencia de tareas identificable, con seguimiento irregular o revisiones escasas.</li>
+<li>1 Inicial: planificación informal o tablero creado al final, sin evidencia del seguimiento.</li>
 </ul>
 <h2 id="s22">Rúbrica f Sistemas e integración</h2>
 <ul>
@@ -208,7 +208,7 @@ docker compose down</pre>
 <li>1 Inicial: elimina anomalías sin criterio, oculta ausencias o presenta tiempos y costes sin método verificable.</li>
 </ul>
 <h2 id="s24">17 Defensa y revisión individual</h2>
-<p>La demostración del equipo durará aproximadamente 12 minutos: contexto y arquitectura, ejecución, panel y prueba de una incidencia elegida por el profesor. Después cada integrante responderá preguntas o realizará una modificación breve, durante unos 5 minutos.</p>
+<p>La demostración individual durará aproximadamente 12 minutos: contexto y arquitectura, ejecución, panel y prueba de una incidencia elegida por el profesor. Después el alumno responderá preguntas o realizará una modificación breve, durante unos 5 minutos.</p>
 <p>Ejemplos de comprobación: cambiar un umbral y explicar el efecto; localizar el origen de una fila rechazada; demostrar que una carga repetida no altera los totales; explicar kW frente a kWh; justificar un join temporal; interpretar una medición de memoria; mostrar cómo se reorganizó una tarea del tablero.</p>
 <p>Preparad la demostración sobre una muestra pequeña para que pueda ejecutarse durante la defensa. El histórico ampliado se acredita con resultados, parámetros, versiones y registro de ejecución.</p>
 <h2 id="s25">18 Lista de revisión antes de entregar</h2>
@@ -221,7 +221,7 @@ docker compose down</pre>
 <li>Los originales se conservan y la segunda carga no duplica resultados.</li>
 <li>El repositorio contiene muestras, código y documentación, sin credenciales ni históricos voluminosos.</li>
 <li>La entrega incluye commit o etiqueta, informe, vídeo y aportaciones individuales.</li>
-<li>Todos los integrantes pueden explicar el flujo y sus decisiones.</li>
+<li>El alumno puede explicar el flujo completo y sus decisiones.</li>
 </ul>
 <h2 id="s26">19 Ampliaciones y documentación de consulta</h2>
 <p>Una vez completado el núcleo, podéis incorporar MQTT, una API de consulta, pruebas automáticas en GitHub Actions, una segunda planta o una comparación con almacenamiento en nube. Acordad el alcance con el profesor. Una ampliación debe aportar una pregunta y evidencia, no solamente una herramienta nueva.</p>

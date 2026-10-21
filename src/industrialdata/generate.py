@@ -9,7 +9,7 @@ def generate(*, output, seed, scenario, machines, minutes):
     """Crear las cuatro fuentes y el manifiesto según el enunciado.
 
     TODO: reproducibilidad, escenarios, identidad de eventos y conservación de raw.
-    El equipo debe decidir el modelo, los parámetros y las muestras de referencia.
+    Cada alumno debe decidir el modelo, los parámetros y las muestras de referencia.
     """
     raise NotImplementedError('H2 pendiente: implementar generate() y sus pruebas.')
 

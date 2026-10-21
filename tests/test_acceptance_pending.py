@@ -12,4 +12,4 @@ CASES = [
 @pytest.mark.aceptacion
 @pytest.mark.parametrize('case', CASES)
 def test_acceptance_to_implement(case):
-    pytest.skip(f'{case}: el equipo debe implementar el caso y su resultado esperado independiente')
+    pytest.skip(f'{case}: cada alumno debe implementar el caso y su resultado esperado independiente')

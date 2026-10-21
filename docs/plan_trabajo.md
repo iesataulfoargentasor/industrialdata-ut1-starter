@@ -1,8 +1,8 @@
 # Plan de trabajo · H1–H6
 
-Equipo, integrantes, tablero y fechas: por completar.
+Alumno, repositorio personal, tablero y fechas: por completar.
 
-| Hito | Estimación inicial | Responsable y revisor | Issues | Criterio de cierre | Tiempo real y ajuste |
+| Hito | Estimación inicial | Revisión propia prevista | Issues | Criterio de cierre | Tiempo real y ajuste |
 |---|---:|---|---|---|---|
 | H1 Diseño | 4 h | | | Modelo, contrato y objetivos revisados | |
 | H2 Infraestructura y simulación | 7 h | | | Fuentes reproducibles y escenarios propios | |
@@ -17,4 +17,4 @@ Equipo, integrantes, tablero y fechas: por completar.
 |---|---|---|---|---|
 | Por completar | | | | |
 
-No trasladéis toda la planificación al final. Registrad una rotación de áreas y revisiones cruzadas; enlazad las aportaciones desde CONTRIBUTING.md.
+No trasladéis toda la planificación al final. Registrad el avance individual, las comprobaciones y los ajustes de planificación; enlazad las evidencias desde CONTRIBUTING.md.
