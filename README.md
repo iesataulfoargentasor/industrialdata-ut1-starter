@@ -7,6 +7,8 @@ Vuestro equipo construirá una plataforma de datos para una planta industrial fi
 
 **Este repositorio es un punto de partida, no una práctica resuelta.** Los datos serán sintéticos; no representan una empresa real. El [enunciado completo y la rúbrica](docs/enunciado.html) definen los requisitos. Este README acompaña el arranque y deberá evolucionar hasta explicar vuestro proyecto terminado.
 
+**Empezad aquí:** [crear vuestro repositorio desde la plantilla](https://github.com/iesataulfoargentasor/industrialdata-ut1-starter/generate). Después seguid el apartado 3 para clonarlo y arrancar Docker.
+
 ## 1. Qué recibís y qué construiréis
 
 | Incluido y utilizable desde el inicio | Trabajo que debe realizar el equipo |
@@ -55,13 +57,37 @@ Una fila rechazada y un fallo fatal de ejecución son situaciones diferentes. Do
 
 ## 3. Primer arranque: unos minutos para comprobar la base
 
-Necesitáis Docker Desktop con **contenedores Linux** y Docker Compose. No hace falta instalar Python ni PostgreSQL en Windows. La primera construcción requiere internet. Git es necesario cuando empecéis a versionar el trabajo; podéis consultar los notebooks en Colab como en UT1.
+Necesitáis una cuenta de GitHub, Git instalado y Docker Desktop con **contenedores Linux** y Docker Compose. En Windows, iniciad Docker Desktop y esperad a que el motor esté disponible. No hace falta instalar Python ni PostgreSQL en Windows. La primera construcción requiere internet; podéis consultar los notebooks en Colab como en UT1.
 
 Como orientación de trabajo, reservad unos 4 GB para la base y más recursos para el millón de observaciones o Spark. El consumo de vuestra implementación deberá medirse; estos valores no son mínimos garantizados. No ejecutéis varios experimentos grandes a la vez.
 
-### Paso 1. Abrir la carpeta correcta
+### Paso 1. Crear el repositorio del equipo
 
-Descomprimid el paquete en una carpeta de trabajo. Abrid una terminal **dentro de `IndustrialData_Alumnado/`, donde están este README y `compose.yaml`**. Todos los comandos siguientes se ejecutan ahí. No trabajéis desde la carpeta general que contiene otros materiales del curso.
+1. Iniciad sesión y abrid la [plantilla IndustrialData](https://github.com/iesataulfoargentasor/industrialdata-ut1-starter).
+2. Pulsad **Use this template → Create a new repository** (o el enlace «crear vuestro repositorio» del inicio).
+3. Elegid la cuenta propietaria en **Owner** y un nombre, por ejemplo `industrialdata-equipo-01`.
+4. Elegid visibilidad: puede ser privado con acceso para el profesor; hacerlo público como portfolio es opcional. Dejad desmarcado **Include all branches**: basta `main`.
+5. Pulsad **Create repository from template**. Un integrante crea el repositorio compartido e invita al resto y al profesor desde **Settings → Collaborators**; los demás aceptan la invitación.
+
+La copia tendrá su propio historial. Los cambios posteriores de la plantilla no se incorporan automáticamente. [Ayuda oficial de GitHub sobre plantillas](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-repository-from-a-template).
+
+### Paso 2. Clonar vuestra copia
+
+En la página de **vuestro nuevo repositorio**, copiad la URL de **Code → HTTPS**. Sustituid `TU_USUARIO` y `industrialdata-equipo-01` por el propietario y nombre reales:
+
+```console
+git clone https://github.com/TU_USUARIO/industrialdata-equipo-01.git
+cd industrialdata-equipo-01
+git remote -v
+```
+
+Comprobad que `origin` apunta al repositorio del equipo. Cada integrante lo clona en su ordenador. GitHub puede solicitar autenticación para repositorios privados o para subir cambios; utilizad su mecanismo de inicio de sesión, sin escribir credenciales en los archivos del proyecto.
+
+La clonación ya configura Git y `origin`; podéis empezar a trabajar directamente. Todos los comandos restantes se ejecutan **en la carpeta que contiene este README y `compose.yaml`**. Si recibisteis el ZIP, cread igualmente vuestra copia en GitHub y clonadla para seguir este flujo.
+
+### Paso 3. Preparar la configuración local
+
+Copiad el archivo de ejemplo **una sola vez en cada clon nuevo**. Si ya existe `.env`, revisadlo sin sobrescribir vuestros ajustes.
 
 En PowerShell:
 
@@ -77,7 +103,7 @@ cp .env.example .env
 
 Los valores son exclusivos de la demo local. Si el puerto 8501 está ocupado, editad `.env` y poned `DASHBOARD_PORT=8502`; entonces abriréis `http://localhost:8502`. PostgreSQL no publica un puerto en el equipo anfitrión.
 
-### Paso 2. Construir e iniciar
+### Paso 4. Construir e iniciar
 
 ```console
 docker compose config --quiet
@@ -90,7 +116,7 @@ docker compose ps
 
 Simulator, pipeline y dashboard comparten imagen; basta construir `pipeline`. Los servicios `simulator` y `pipeline` son tareas puntuales: no tienen que permanecer encendidos. Aunque están en el perfil `tools`, se pueden ejecutar directamente por su nombre.
 
-### Paso 3. Comprobar lo que debe ocurrir
+### Paso 5. Comprobar lo que debe ocurrir
 
 - `db` y `dashboard` aparecen saludables (`healthy`).
 - `check_infra.py` muestra `infrastructure: OK`; crea las carpetas de trabajo vacías y comprueba la conexión SQL.
@@ -146,7 +172,7 @@ Esta orden solo verifica que Spark puede arrancar y contar tres filas de prueba.
 ## 5. Mapa del repositorio
 
 ```text
-IndustrialData_Alumnado/
+industrialdata-equipo-01/      # El nombre real será el de vuestro repositorio
 ├── README.md                  # Guía viva: completadla con vuestro proyecto
 ├── compose.yaml               # Servicios y persistencia
 ├── .env.example               # Configuración local de ejemplo
@@ -203,25 +229,27 @@ docker compose down
 
 No añadáis `-v` si queréis conservar PostgreSQL. Para P09, comparad catálogo y resultados antes y después del reinicio sin regenerarlos. Que el panel abra no demuestra por sí solo que los datos sigan intactos.
 
-## 7. Iniciar el trabajo en GitHub
+## 7. Guardar avances y colaborar en GitHub
 
-El paquete no crea ni publica ningún repositorio. Desde **esta carpeta**:
+Después de crear vuestra copia y clonarla siguiendo el apartado 3, abrid una rama para la primera tarea. Por ejemplo, completad el diseño en `docs/modelo_y_contrato.md` y guardad el cambio:
 
 ```console
-git init -b main
-git add .
+git switch -c docs/diseno-inicial
 git status
-git commit -m "Añadir estructura inicial de IndustrialData"
+git add docs/modelo_y_contrato.md
+git diff --cached
+git commit -m "Documentar el diseño inicial del equipo"
+git push -u origin docs/diseno-inicial
 ```
 
-Revisad `git status`: `.env` y los históricos de `data/` no deben entrar en el commit. Cread un repositorio vacío en GitHub y usad su URL real en lugar del marcador siguiente:
+Ejecutad el commit después de editar y guardar el documento. Revisad siempre los archivos preparados: `.env` y los históricos de `data/` deben quedar fuera. Abrid una **pull request en vuestro repositorio**, solicitad revisión a otro integrante e integradla cuando esté revisada. Después, cada integrante actualiza su copia de `main`:
 
 ```console
-git remote add origin https://github.com/TU_USUARIO/industrialdata.git
-git push -u origin main
+git switch main
+git pull --ff-only
 ```
 
-Puede ser privado con acceso para el profesor; hacerlo público como portfolio es opcional. No inicialicéis otro README en GitHub si ya habéis creado el commit local.
+Antes de cambiar de rama, guardad vuestro trabajo pendiente mediante commits en su rama. Entregad al profesor la URL del repositorio del equipo y comprobad que puede acceder.
 
 Usad las plantillas de `.github/` para abrir tareas y revisar cambios. Preparad un tablero **Pendiente → En curso → En revisión → Hecho**, con prioridades y criterios de cierre. Repartid las tres áreas de trabajo, rotad al menos una vez y registrad revisiones reales. Seguid [CONTRIBUTING.md](CONTRIBUTING.md). El paquete no incluye automatización de GitHub Actions: es una ampliación del enunciado.
 
